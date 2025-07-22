@@ -66,12 +66,12 @@ Make sure your Jenkins server has the following:
 
 ---
 ![Docker Hub](assets/1.png)
-![Docker Hub](assets/2.png)
+![Docker Hub](assets/7.png)
 ![Docker Hub](assets/3.png)
 ![Docker Hub](assets/4.png)
 ![Docker Hub](assets/5.png)
 ![Docker Hub](assets/6.png)
-![Docker Hub](assets/7.png)
+![Docker Hub](assets/2.png)
 ![Docker Hub](assets/8.png)
 ![Docker Hub](assets/9.png)
 ![Docker Hub](assets/10.png)
