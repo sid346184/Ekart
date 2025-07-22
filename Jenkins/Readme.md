@@ -65,6 +65,7 @@ Make sure your Jenkins server has the following:
 - Use `withCredentials` block for secure usage in pipeline scripts.
 
 ---
+![](assets/diagram.png)
 ![](assets/1.png)
 ![](assets/7.png)
 ![](assets/6.png)
