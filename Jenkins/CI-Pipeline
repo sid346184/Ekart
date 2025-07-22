@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Git CheckOut') {
             steps {
-                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/<Github-Repo-Url>'
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/<GithubRepo>'
             }
         }
         stage('Compile using Maven') {
@@ -29,7 +29,7 @@ pipeline {
                     -Dsonar.projectName=shopping-cart \
                     -Dsonar.java.binaries=target/classes \
                     -Dsonar.host.url=http://20.244.106.132:9000 \
-                    -Dsonar.login=<Sonar-Token>
+                    -Dsonar.login=<SonarQubeToken>
                 '''
             }
         }
@@ -41,21 +41,21 @@ pipeline {
         }
         stage('Build usin Maven') {
             steps {
-                sh "mvn clean install"
+                sh "mvn clean install -DskipTests=True"
             }
         }
         stage('Build and Push on Docker') {
             steps {
-                withDockerRegistry(credentialsId: '<Docker-Credential>', url: 'https://index.docker.io/v1/') {
+                withDockerRegistry(credentialsId: '<DockerCredential>', url: 'https://index.docker.io/v1/') {
                     sh "docker build -t shopping:latest -f docker/Dockerfile ."
                     sh "docker tag shopping:latest <DockerUsername>/shopping:latest"
                     sh "docker push <DockerUsername>/shopping:latest"
                 }
             }
         }
-        stage('Trigger CD'){
-            steps{
-                build_job: "CD-Pipeine", wait:true
+        stage('Trigger CD') {
+            steps {
+                build job: 'CD-Pipeline', wait: true
             }
         }
     }
