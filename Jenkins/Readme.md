@@ -65,6 +65,6 @@ Make sure your Jenkins server has the following:
 - Use `withCredentials` block for secure usage in pipeline scripts.
 
 ---
-!(Jenkins/assets/1.png)
+!(Ekart/Jenkins/assets/1.png)
 
 
